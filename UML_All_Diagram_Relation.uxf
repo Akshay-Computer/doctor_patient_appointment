@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="15.1">
+  <zoom_level>6</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>12</x>
+      <y>54</y>
+      <w>216</w>
+      <h>174</h>
+    </coordinates>
+    <panel_attributes>Package::Physiotherapist
+{Some Properties}
+--
+-id: Long {composite}
+_name: String
+_address: String
+_telephone: String
+_expertise: List&lt;String&gt;
+_-ClassAttribute: Long_
+--
+#viewAvailableAppointments(): List&lt;Appointment&gt;
+#addTreatment(treatment: Treatment): void
+#removeTreatment(treatment: Treatment): void
+/+AbstractOperation(): void/
+--
+Responsibilities
+-- Manages available appointments
+-- Manages treatment timetable
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>642</x>
+      <y>60</y>
+      <w>294</w>
+      <h>168</h>
+    </coordinates>
+    <panel_attributes>Package::Patient
+{Some Properties}
+--
+-id: Long {composite}
+_name: String
+_address: String
+_telephone: String
+--
+#bookAppointment(appointment: Appointment): void
+#cancelAppointment(appointment: Appointment): void
+#changeAppointment(bookingID: Long, newAppointment: Appointment): void
+/+AbstractOperation(): void/
+--
+Responsibilities
+-- Books, cancels, or changes appointments
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>318</x>
+      <y>294</y>
+      <w>228</w>
+      <h>126</h>
+    </coordinates>
+    <panel_attributes>Package::Treatment
+{Some Properties}
+--
+-id: Long {composite}
+_name: String
+_description: String
+_duration: String
+_-ClassAttribute: Long_
+--
+#applyTreatment(): void
+/+AbstractOperation(): void/
+--
+Responsibilities
+-- Defines treatment details
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>324</x>
+      <y>54</y>
+      <w>222</w>
+      <h>174</h>
+    </coordinates>
+    <panel_attributes>Package::Appointment
+{Some Properties}
+--
+-bookingID: Long {composite}
+_patient: Patient
+_physio: Physiotherapist
+_treatment: Treatment
+_dateTime: String
+_status: String {booked, attended, cancelled}
+--
+#manageAppointmentStatus(): void
+#updateStatus(status: String): void
+/+AbstractOperation(): void/
+--
+Responsibilities
+-- Manages appointment status (booked, attended, cancelled)
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>642</x>
+      <y>294</y>
+      <w>228</w>
+      <h>132</h>
+    </coordinates>
+    <panel_attributes>Package::Timetable
+{Some Properties}
+--
+-week1: List&lt;Appointment&gt;
+-week2: List&lt;Appointment&gt;
+-week3: List&lt;Appointment&gt;
+-week4: List&lt;Appointment&gt;
+_-ClassAttribute: Long_
+--
+#addAppointment(appointment: Appointment): void
+#removeAppointment(appointment: Appointment): void
+/+AbstractOperation(): void/
+--
+Responsibilities
+-- Manages the treatment timetable for 4 weeks
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>6</x>
+      <y>456</y>
+      <w>264</w>
+      <h>114</h>
+    </coordinates>
+    <panel_attributes>Package::Report
+{Some Properties}
+--
+_physio: Physiotherapist
+_appointments: List&lt;Appointment&gt;
+_-ClassAttribute: Long_
+--
+#generateReport(): String
+/+AbstractOperation(): void/
+--
+Responsibilities
+-- Generates and prints reports on appointments for physiotherapists
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>222</x>
+      <y>144</y>
+      <w>114</w>
+      <h>18</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;170.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>540</x>
+      <y>126</y>
+      <w>114</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=3
+m2=1
+&lt; teaches to</panel_attributes>
+    <additional_attributes>10.0;20.0;170.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>402</x>
+      <y>222</y>
+      <w>66</w>
+      <h>84</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=3
+m2=1
+&lt; teaches to</panel_attributes>
+    <additional_attributes>10.0;120.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>516</x>
+      <y>222</y>
+      <w>138</w>
+      <h>138</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>210.0;210.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>90</x>
+      <y>222</y>
+      <w>24</w>
+      <h>246</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>20.0;10.0;10.0;390.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>240</x>
+      <y>216</y>
+      <w>102</w>
+      <h>252</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=0..n
+m2=0..1
+teaches to &gt;</panel_attributes>
+    <additional_attributes>10.0;400.0;20.0;200.0;140.0;10.0</additional_attributes>
+  </element>
+</diagram>
